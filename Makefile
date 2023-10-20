@@ -1,5 +1,5 @@
-CFLAGS  := -Wall -Wextra -pipe -pedantic -std=c99 -g
-LIBS    := -lcrypto -lssl -lpthread
+CFLAGS  := -Wall -fPIC -Wextra -pipe -pedantic -std=c99 -g
+LIBS    := -lcrypto -lssl -lpthread -static-libstdc++ -static-libgcc
 PERF    ?=
 ifeq ($(PERF), 1)
 LDFLAGS := -Wl,--as-needed -Wl,--hash-style=gnu  -flto -fuse-linker-plugin
@@ -24,7 +24,7 @@ endef
 $(foreach bin,$(BINS),$(eval $(call BIN_template,$(bin))))
 
 $(BINS):
-	$(CC) $(CFLAGS) $(LIBS) $(LDFLAGS) -o $@ ${$@_OBJS}
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ ${$@_OBJS} $(LIBS)
 ifeq ($(PERF), 1)
 	strip $@
 endif

@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "conf.h": "c",
+    "ssl.h": "c",
+    "crypto.h": "c",
+    "x509v3.h": "c"
+  }
+}

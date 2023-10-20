@@ -7,6 +7,8 @@
 #include <fcntl.h>
 #include <string.h>
 
+#include <openssl/ssl.h>
+#include <openssl/crypto.h>
 #include <openssl/err.h>
 #include <openssl/conf.h>
 #include <openssl/pem.h>
